@@ -11,6 +11,16 @@
         android:layout_height="match_parent">
 
         <fragment
+            android:id="@+id/add_fragment"
+            android:name="lln.recycler.fragment.fragment.AdicionarFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout="@layout/fragment_adicionar" />
+
+        <fragment
             android:id="@+id/nome_fragment"
             android:name="lln.recycler.fragment.fragment.NomeFragment"
             android:layout_width="match_parent"
@@ -18,7 +28,7 @@
             android:layout_marginTop="20dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/add_fragment"
             tools:layout="@layout/fragment_nome" />
 
         <fragment
