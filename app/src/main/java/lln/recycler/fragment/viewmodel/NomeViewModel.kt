@@ -2,43 +2,29 @@ package lln.recycler.fragment.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import lln.recycler.fragment.ScreenState
 
 class NomeViewModel : ViewModel() {
 
-    private var _nomeLiveData = String()
-
-    val nomeLiveData: String
-        get() = _nomeLiveData
+    val liveData = MutableLiveData<ScreenState<String>>()
 
 
-    fun setNome(nome: String) {
-        _nomeLiveData = nome
+    open var changeObserver = Observer<ScreenState<String>> { value ->
+        value?.let {
+            setScreenState(it)
+        }
     }
-
-    init {
-
-    }
-
-
-    val _nome: MutableLiveData<ScreenState<String>> by lazy {
-        MutableLiveData<ScreenState<String>>()
-    }
-
-    fun getNome(): MutableLiveData<ScreenState<String>> {
-        return _nome
-    }
-
 
 
     fun setScreenState(screenState: ScreenState<String>) {
         when (screenState) {
             is ScreenState.Success -> {
-                Log.i("NomeViewModel", screenState.data)
+                //liveData.postValue(ScreenState.Success(screenState.data))
+                //liveData.value = ScreenState.Success(screenState.data)
             }
         }
     }
-
 
 }
